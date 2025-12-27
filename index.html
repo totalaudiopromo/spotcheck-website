@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spot Check - Spotify Playlist Validator</title>
+  <meta name="description" content="Validate Spotify playlists instantly. Check followers, track counts, curator legitimacy, and detect bot playlists before you pitch.">
+  <meta name="keywords" content="spotify, playlist, validator, bot detection, music promotion, curator, playlist checker">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ccircle cx='64' cy='64' r='56' fill='%231DB954'/%3E%3Crect x='30' y='58' width='14' height='28' rx='7' fill='white'/%3E%3Crect x='50' y='42' width='14' height='44' rx='7' fill='white'/%3E%3Cpath d='M72 68l12 12 22-26' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spot Check - Spotify Playlist Validator">
+  <meta property="og:description" content="Stop wasting money on fake playlists. Validate before you pitch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spotcheck.cc">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spot Check - Spotify Playlist Validator">
+  <meta name="twitter:description" content="Stop wasting money on fake playlists. Validate before you pitch.">
+
+  <style>
+    :root {
+      --spotify-green: #1DB954;
+      --spotify-green-dark: #1aa34a;
+      --spotify-green-glow: rgba(29, 185, 84, 0.4);
+      --bg-primary: #000000;
+      --bg-secondary: #121212;
+      --bg-tertiary: #181818;
+      --text-primary: #ffffff;
+      --text-secondary: #a7a7a7;
+      --text-muted: #6a6a6a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Background effects */
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(29, 185, 84, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(29, 185, 84, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo svg {
+      filter: drop-shadow(0 0 12px var(--spotify-green-glow));
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .btn-install {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--spotify-green);
+      color: #000;
+      text-decoration: none;
+      border-radius: 500px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-install:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 20px var(--spotify-green-glow);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0 100px;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-content h1 span {
+      color: var(--spotify-green);
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--spotify-green);
+      color: #000;
+      text-decoration: none;
+      border-radius: 500px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 30px var(--spotify-green-glow);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--text-primary);
+      text-decoration: none;
+      border-radius: 500px;
+      font-weight: 600;
+      font-size: 16px;
+      border: 1px solid var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-primary);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .browser-icons {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 13px;
+      align-items: center;
+    }
+
+    .browser-icons span {
+      opacity: 0.6;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .extension-preview {
+      width: 340px;
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow:
+        0 50px 100px rgba(0,0,0,0.5),
+        0 0 60px var(--spotify-green-glow);
+      border: 1px solid rgba(255,255,255,0.1);
+      transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+    }
+
+    .preview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .preview-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .preview-logo-text {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .preview-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 4px 8px;
+      background: linear-gradient(135deg, #ffd700 0%, #f97316 100%);
+      color: #000;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .preview-content {
+      padding: 16px;
+    }
+
+    .preview-result {
+      background: var(--bg-tertiary);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .preview-playlist {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .preview-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #1a2e1a 0%, #162e16 100%);
+    }
+
+    .preview-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .preview-curator {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .preview-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .preview-metric {
+      background: rgba(0,0,0,0.3);
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .preview-value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .preview-label {
+      font-size: 9px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .preview-score {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .preview-score-label {
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    .preview-score-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      background: rgba(29, 185, 84, 0.2);
+      color: var(--spotify-green);
+      border-radius: 20px;
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .features-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .features-header p {
+      color: var(--text-secondary);
+      font-size: 18px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--spotify-green);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(29, 185, 84, 0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--spotify-green);
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Pricing */
+    .pricing {
+      padding: 80px 0;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pricing-header h2 {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--spotify-green);
+      background: linear-gradient(180deg, rgba(29, 185, 84, 0.1) 0%, var(--bg-secondary) 100%);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 6px 14px;
+      background: var(--spotify-green);
+      color: #000;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .pricing-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .price span {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--spotify-green);
+      font-weight: 700;
+    }
+
+    .btn-pricing {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      text-align: center;
+      border-radius: 500px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-pricing.primary {
+      background: var(--spotify-green);
+      color: #000;
+    }
+
+    .btn-pricing.primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px var(--spotify-green-glow);
+    }
+
+    .btn-pricing.secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--text-muted);
+    }
+
+    .btn-pricing.secondary:hover {
+      border-color: var(--text-primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 60px 0;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-content p {
+        margin: 0 auto 32px;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .browser-icons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .extension-preview {
+        width: 300px;
+        transform: none;
+      }
+
+      .features-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+
+  <div class="container">
+    <header>
+      <a href="/" class="logo">
+        <svg width="32" height="32" viewBox="0 0 128 128" fill="none">
+          <circle cx="64" cy="64" r="56" fill="#1DB954"/>
+          <rect x="30" y="58" width="14" height="28" rx="7" fill="white"/>
+          <rect x="50" y="42" width="14" height="44" rx="7" fill="white"/>
+          <path d="M72 68l12 12 22-26" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">Spot Check</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/privacy">Privacy</a>
+        <a href="#" class="btn-install">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Install Free
+        </a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Stop wasting money on <span>fake playlists</span></h1>
+        <p>Instantly validate any Spotify playlist. Check followers, detect bots, and verify curator legitimacy before you pitch.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            Add to Chrome - Free
+          </a>
+          <a href="#features" class="btn-secondary">Learn more</a>
+        </div>
+        <div class="browser-icons">
+          <span>Also available for Firefox, Safari, Edge, Arc, Opera, Brave</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="extension-preview">
+          <div class="preview-header">
+            <div class="preview-logo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#1DB954"/>
+                <rect x="6" y="11" width="2.5" height="5" rx="1.25" fill="white"/>
+                <rect x="9.5" y="8" width="2.5" height="8" rx="1.25" fill="white"/>
+                <path d="M14 12.5l2 2 3.5-4" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="preview-logo-text">Spot Check</span>
+            </div>
+            <span class="preview-badge">Premium</span>
+          </div>
+          <div class="preview-content">
+            <div class="preview-result">
+              <div class="preview-playlist">
+                <div class="preview-img"></div>
+                <div>
+                  <div class="preview-title">Indie Chill Vibes</div>
+                  <div class="preview-curator">by Spotify Curators</div>
+                </div>
+              </div>
+              <div class="preview-metrics">
+                <div class="preview-metric">
+                  <div class="preview-value">24,891</div>
+                  <div class="preview-label">Followers</div>
+                </div>
+                <div class="preview-metric">
+                  <div class="preview-value">147</div>
+                  <div class="preview-label">Tracks</div>
+                </div>
+              </div>
+              <div class="preview-score">
+                <span class="preview-score-label">Bot Risk Score</span>
+                <span class="preview-score-badge">12% Low</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="features-header">
+        <h2>Everything you need to validate playlists</h2>
+        <p>Built by music promoters, for music promoters</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Bot Detection</h3>
+          <p>Our algorithm analyses follower patterns, growth spikes, and engagement metrics to identify fake playlists.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Follower Trends</h3>
+          <p>Track playlist performance over time. Spot suspicious growth patterns and monitor changes after your track is added.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Bulk Validation</h3>
+          <p>Check up to 50 playlists at once. Perfect for validating entire pitch lists before a campaign.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+          </div>
+          <h3>Curator Verification</h3>
+          <p>View curator profiles, check their other playlists, and verify their legitimacy before pitching.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h3>Export Reports</h3>
+          <p>Download validation results as CSV or JSON. Keep records for your clients or your own campaigns.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>Change Alerts</h3>
+          <p>Get notified when tracked playlists change. Know immediately if your track is removed or followers drop.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="pricing-header">
+        <h2>Simple, transparent pricing</h2>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">£0<span>/month</span></div>
+          <ul class="pricing-features">
+            <li>5 checks per day</li>
+            <li>Basic metrics</li>
+            <li>Curator info</li>
+            <li>Active/removed detection</li>
+          </ul>
+          <a href="#" class="btn-pricing secondary">Get Started</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <span class="popular-tag">Most Popular</span>
+          <h3>Premium</h3>
+          <div class="price">£4.99<span>/month</span></div>
+          <ul class="pricing-features">
+            <li>Unlimited checks</li>
+            <li>Bulk validation (50 at once)</li>
+            <li>Historical tracking</li>
+            <li>Bot detection score</li>
+            <li>CSV/JSON export</li>
+          </ul>
+          <a href="#" class="btn-pricing primary">Upgrade Now</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Pro</h3>
+          <div class="price">£14.99<span>/month</span></div>
+          <ul class="pricing-features">
+            <li>Everything in Premium</li>
+            <li>API access (100 req/day)</li>
+            <li>Webhook alerts</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="btn-pricing secondary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="mailto:hello@spotcheck.cc">Contact</a>
+          <a href="#">Chrome Web Store</a>
+        </div>
+        <div class="footer-copy">
+          © 2025 Spot Check. Built by Total Audio Promo Ltd.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
