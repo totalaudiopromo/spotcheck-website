@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /checkout/
+Disallow: /portal/
+Disallow: /dashboard/
+
+Sitemap: https://spotcheck.cc/sitemap.xml
