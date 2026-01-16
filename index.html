@@ -1006,8 +1006,12 @@
         </div>
       </section>
 
-      <!-- Intel Escalation Block -->
-      <section class="intel-escalation" id="intel-escalation">
+      <!-- Intel Escalation Block (hidden by default) -->
+      <section
+        class="intel-escalation"
+        id="intel-escalation"
+        style="display: none"
+      >
         <div class="intel-escalation-content">
           <div class="intel-escalation-badge">
             <svg
@@ -1105,5 +1109,42 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      // Placeholder logic for conditional display
+      // In a real implementation, this would be tied to the API response
+      // of a playlist check.
+      function showIntelEscalationIfNeeded(analysisResult) {
+        const escalationBlock = document.getElementById("intel-escalation");
+        if (!escalationBlock) return;
+
+        // Example triggers: risk detected, uncertainty flagged, or "inconclusive" state
+        const hasRisk = analysisResult.bot_risk_score > 0.4; // 40% risk
+        const isUncertain = analysisResult.confidence_score < 0.7; // 70% confidence
+
+        if (hasRisk || isUncertain) {
+          escalationBlock.style.display = "block";
+
+          // Optional: you could even change the copy based on the trigger
+          const headline = escalationBlock.querySelector("h4");
+          if (hasRisk && headline) {
+            headline.textContent =
+              "This playlist shows risk. Situations change — contacts move, outlets shift focus, relationships drift.";
+          }
+        }
+      }
+
+      // --- Example Usage ---
+      // This is a dummy example. In reality, you would call this
+      // function after your backend returns a validation result.
+      document.addEventListener("DOMContentLoaded", () => {
+        // Simulate a risky result to demonstrate the feature
+        const exampleRiskyResult = {
+          bot_risk_score: 0.55,
+          confidence_score: 0.8,
+        };
+        showIntelEscalationIfNeeded(exampleRiskyResult);
+      });
+    </script>
   </body>
 </html>
