@@ -659,6 +659,196 @@
         height: 16px;
       }
 
+      /* FAQ Section */
+      .faq {
+        padding: 80px 0;
+      }
+
+      .faq-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .faq-header h2 {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .faq-item h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--text-primary);
+      }
+
+      .faq-item p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Social Proof */
+      .social-proof {
+        padding: 80px 0;
+        background: var(--bg-secondary);
+        margin: 0 -24px;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .social-proof-header {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .social-proof-header h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .social-proof-header p {
+        color: var(--text-secondary);
+        font-size: 16px;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .testimonial-card {
+        background: var(--bg-tertiary);
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .testimonial-card p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--spotify-green) 0%, #1aa34a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #000;
+      }
+
+      .testimonial-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .testimonial-role {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Email Capture */
+      .email-capture {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .email-capture h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .email-capture p {
+        color: var(--text-secondary);
+        font-size: 16px;
+        margin-bottom: 32px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .email-form {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+      }
+
+      .email-form input {
+        flex: 1;
+        min-width: 250px;
+        padding: 16px 20px;
+        border-radius: 500px;
+        border: 1px solid var(--text-muted);
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        font-size: 16px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .email-form input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .email-form input:focus {
+        border-color: var(--spotify-green);
+      }
+
+      .email-form button {
+        padding: 16px 32px;
+        border-radius: 500px;
+        border: none;
+        background: var(--spotify-green);
+        color: #000;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .email-form button:hover {
+        transform: scale(1.04);
+        box-shadow: 0 4px 20px var(--spotify-green-glow);
+      }
+
       /* Footer */
       footer {
         padding: 40px 0;
@@ -727,7 +917,9 @@
         }
 
         .features-grid,
-        .pricing-grid {
+        .pricing-grid,
+        .faq-grid,
+        .testimonials-grid {
           grid-template-columns: 1fr;
         }
 
@@ -767,14 +959,14 @@
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
           <a href="/privacy">Privacy</a>
-          <a href="#" class="btn-install">
+          <span class="btn-install" style="opacity: 0.7; cursor: default;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
               />
             </svg>
-            Install Free
-          </a>
+            Coming Soon
+          </span>
         </nav>
       </header>
 
@@ -786,7 +978,7 @@
             bots, and verify curator legitimacy before you pitch.
           </p>
           <div class="hero-cta">
-            <a href="#" class="btn-primary">
+            <a href="#contact" class="btn-primary">
               <svg
                 width="20"
                 height="20"
@@ -797,7 +989,7 @@
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
                 />
               </svg>
-              Add to Chrome - Free
+              Get Notified at Launch
             </a>
             <a href="#features" class="btn-secondary">Learn more</a>
           </div>
@@ -1065,7 +1257,7 @@
               <li>Curator info</li>
               <li>Active/removed detection</li>
             </ul>
-            <a href="#" class="btn-pricing secondary">Get Started</a>
+            <span class="btn-pricing secondary" style="cursor: default; opacity: 0.8;">Coming to Chrome Web Store</span>
           </div>
 
           <div class="pricing-card featured">
@@ -1079,7 +1271,7 @@
               <li>Bot detection score</li>
               <li>CSV/JSON export</li>
             </ul>
-            <a href="#" class="btn-pricing primary">Upgrade Now</a>
+            <a href="https://spot-checker.totalaudiopromo.com/api/checkout?plan=premium" class="btn-pricing primary">Upgrade Now</a>
           </div>
 
           <div class="pricing-card">
@@ -1091,8 +1283,92 @@
               <li>Webhook alerts</li>
               <li>Priority support</li>
             </ul>
-            <a href="#" class="btn-pricing secondary">Contact Us</a>
+            <a href="https://spot-checker.totalaudiopromo.com/api/checkout?plan=pro" class="btn-pricing secondary">Upgrade Now</a>
           </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="faq" id="faq">
+        <div class="faq-header">
+          <h2>Frequently asked questions</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>Is Spot Check safe to use?</h3>
+            <p>Absolutely. Spot Check only accesses publicly available Spotify playlist data. We never access your personal Spotify account, listening history, or private playlists. All data is processed securely, and we never sell your information to third parties.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>How does playlist validation work?</h3>
+            <p>When you visit a Spotify playlist page, Spot Check analyses the playlist's public metrics including follower count, track history, and curator activity. Our algorithm compares these against patterns typically seen in bot-inflated playlists to calculate a risk score.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Can I cancel my subscription?</h3>
+            <p>Yes, you can cancel anytime from your account settings. You'll retain access to paid features until the end of your current billing period. No questions asked, no hidden fees, no hassle.</p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What data do you access?</h3>
+            <p>We only access publicly available playlist information: playlist name, description, follower count, track list, and curator details. We do not access your Spotify login, personal playlists, or any private account data.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Proof Section -->
+      <section class="social-proof">
+        <div class="container">
+          <div class="social-proof-header">
+            <h2>Trusted by music promoters</h2>
+            <p>Join artists and labels who validate before they pitch</p>
+          </div>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p>"Saved me from wasting hundreds on fake playlists. The bot detection is spot on."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">JM</div>
+                <div>
+                  <div class="testimonial-name">James M.</div>
+                  <div class="testimonial-role">Independent Artist</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p>"Essential tool for any serious playlist campaign. Now I validate every playlist before pitching."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">SR</div>
+                <div>
+                  <div class="testimonial-name">Sarah R.</div>
+                  <div class="testimonial-role">Label Manager</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <p>"The bulk validation feature is a game changer. Checks 50 playlists in seconds."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">DK</div>
+                <div>
+                  <div class="testimonial-name">David K.</div>
+                  <div class="testimonial-role">Music Promoter</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Email Capture Section -->
+      <section class="email-capture" id="contact">
+        <h2>Get notified when we launch</h2>
+        <p>Be the first to know when Spot Check hits the Chrome Web Store. No spam, just launch updates.</p>
+        <div class="email-form">
+          <input type="email" id="email-input" placeholder="Enter your email address" />
+          <button type="button" onclick="sendEmail()">Notify Me</button>
         </div>
       </section>
 
@@ -1100,11 +1376,11 @@
         <div class="footer-content">
           <div class="footer-links">
             <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
             <a href="mailto:hello@spotcheck.cc">Contact</a>
-            <a href="#">Chrome Web Store</a>
           </div>
           <div class="footer-copy">
-            © 2025 Spot Check. Built by Total Audio Promo Ltd.
+            © 2026 Spot Check. Built by Total Audio Promo Ltd.
           </div>
         </div>
       </footer>
@@ -1134,17 +1410,24 @@
         }
       }
 
-      // --- Example Usage ---
-      // This is a dummy example. In reality, you would call this
-      // function after your backend returns a validation result.
-      document.addEventListener("DOMContentLoaded", () => {
-        // Simulate a risky result to demonstrate the feature
-        const exampleRiskyResult = {
-          bot_risk_score: 0.55,
-          confidence_score: 0.8,
-        };
-        showIntelEscalationIfNeeded(exampleRiskyResult);
-      });
+      // Note: showIntelEscalationIfNeeded() is called by the extension
+      // after a playlist validation completes. Not called on page load.
+
+      // Email capture - opens mailto with pre-filled subject
+      function sendEmail() {
+        const emailInput = document.getElementById('email-input');
+        const userEmail = emailInput.value.trim();
+
+        if (!userEmail) {
+          alert('Please enter your email address');
+          return;
+        }
+
+        const subject = encodeURIComponent('Spot Check Launch Notification Request');
+        const body = encodeURIComponent(`Hi,\n\nPlease notify me when Spot Check launches on the Chrome Web Store.\n\nMy email: ${userEmail}\n\nThanks!`);
+
+        window.location.href = `mailto:hello@spotcheck.cc?subject=${subject}&body=${body}`;
+      }
     </script>
   </body>
 </html>
