@@ -1,6 +1,36 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+    </script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://spotcheck.cc/#software",
+        "name": "Spot Check",
+        "url": "https://spotcheck.cc",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Spotify Playlist Validator",
+        "operatingSystem": "Web-based",
+        "description": "Validate Spotify playlists instantly. Check followers, track counts, curator legitimacy, and detect bot playlists.",
+        "offers": {
+          "@type": "Offer",
+          "price": "4.99",
+          "priceCurrency": "GBP",
+          "availability": "https://schema.org/InStock",
+          "url": "https://spotcheck.cc/#pricing"
+        }
+      }
+    </script>
+    <meta name="google-site-verification" content="Lpk3WY0USkCRNfrQpGtis-r4P904nx4i1rq12RRp3UA" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spot Check - Spotify Playlist Validator</title>
