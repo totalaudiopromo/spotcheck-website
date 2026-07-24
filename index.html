@@ -30,55 +30,63 @@
     <meta name="google-site-verification" content="Lpk3WY0USkCRNfrQpGtis-r4P904nx4i1rq12RRp3UA" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spot Check - Spotify Playlist Validator</title>
+    <title>Spot Check — Spotify Playlist Validator & Bot Detector (Total Audio Promo)</title>
     <meta
       name="description"
-      content="Validate Spotify playlists instantly. Check followers, track counts, curator legitimacy, and detect bot playlists before you pitch."
+      content="Validate Spotify playlists instantly. Check followers, track counts, curator legitimacy, and detect bot playlists before you pitch. Built by Total Audio Promo."
     />
     <meta
       name="keywords"
-      content="spotify, playlist, validator, bot detection, music promotion, curator, playlist checker"
+      content="spotify, playlist, validator, bot detection, music promotion, curator, playlist checker, total audio promo"
     />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ccircle cx='64' cy='64' r='56' fill='%231DB954'/%3E%3Crect x='30' y='58' width='14' height='28' rx='7' fill='white'/%3E%3Crect x='50' y='42' width='14' height='44' rx='7' fill='white'/%3E%3Cpath d='M72 68l12 12 22-26' stroke='white' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ccircle cx='64' cy='64' r='56' fill='%2300F59B'/%3E%3Crect x='30' y='58' width='14' height='28' rx='7' fill='%2308090C'/%3E%3Crect x='50' y='42' width='14' height='44' rx='7' fill='%2308090C'/%3E%3Cpath d='M72 68l12 12 22-26' stroke='%2308090C' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
     />
 
     <!-- Open Graph -->
-    <meta
-      property="og:title"
-      content="Spot Check - Spotify Playlist Validator"
-    />
-    <meta
-      property="og:description"
-      content="Stop wasting money on fake playlists. Validate before you pitch."
-    />
+    <meta property="og:title" content="Spot Check — Spotify Playlist Validator" />
+    <meta property="og:description" content="Stop wasting money on fake playlists. Validate before you pitch. Built by Total Audio Promo." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://spotcheck.cc" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Spot Check - Spotify Playlist Validator"
-    />
-    <meta
-      name="twitter:description"
-      content="Stop wasting money on fake playlists. Validate before you pitch."
-    />
+    <meta name="twitter:title" content="Spot Check — Spotify Playlist Validator" />
+    <meta name="twitter:description" content="Stop wasting money on fake playlists. Validate before you pitch. Built by Total Audio Promo." />
+
+    <!-- TAP Design System Fonts: Space Grotesk (Display Headings), Inter (UI), JetBrains Mono (Data) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
     <style>
       :root {
-        --spotify-green: #1db954;
-        --spotify-green-dark: #1aa34a;
-        --spotify-green-glow: rgba(29, 185, 84, 0.4);
-        --bg-primary: #000000;
-        --bg-secondary: #121212;
-        --bg-tertiary: #181818;
-        --text-primary: #ffffff;
-        --text-secondary: #a7a7a7;
-        --text-muted: #6a6a6a;
+        /* TAP Design System Variables & Wispr Flow Theme Tokens */
+        --spotify-green: #00F59B;
+        --spotify-green-dark: #10B981;
+        --spotify-green-glow: rgba(0, 245, 155, 0.22);
+        --tap-accent: #00F59B;
+        --tap-accent-cyan: #0E7490;
+        --bg-primary: #060709;
+        --bg-secondary: #0B0D14;
+        --bg-tertiary: #111420;
+        --bg-card: rgba(16, 20, 31, 0.75);
+        --bg-card-hover: rgba(22, 28, 44, 0.85);
+        --text-primary: #FFFFFF;
+        --text-secondary: #94A3B8;
+        --text-muted: #64748B;
+        --border-glass: rgba(255, 255, 255, 0.08);
+        --border-subtle: rgba(255, 255, 255, 0.05);
+        --border-focus: rgba(0, 245, 155, 0.4);
+        --font-display: 'Space Grotesk', -apple-system, sans-serif;
+        --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+        --risk-low: #00F59B;
+        --risk-medium: #F59E0B;
+        --risk-high: #EF4444;
+        --ease-quint: cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       * {
@@ -88,41 +96,63 @@
       }
 
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
-          sans-serif;
+        font-family: var(--font-ui);
         background: var(--bg-primary);
         color: var(--text-primary);
         line-height: 1.6;
         min-height: 100vh;
         -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
       }
 
-      /* Background effects */
+      /* Ambient Radial Glows (Wispr Flow style spotlighting) */
       .bg-gradient {
         position: fixed;
         inset: 0;
         background:
-          radial-gradient(
-            ellipse 80% 50% at 50% -20%,
-            rgba(29, 185, 84, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse 60% 40% at 100% 100%,
-            rgba(29, 185, 84, 0.1) 0%,
-            transparent 50%
-          );
+          radial-gradient(ellipse 65% 45% at 50% -10%, rgba(0, 245, 155, 0.15) 0%, transparent 65%),
+          radial-gradient(ellipse 45% 35% at 90% 85%, rgba(14, 116, 144, 0.1) 0%, transparent 55%),
+          radial-gradient(ellipse 40% 30% at 10% 40%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
         pointer-events: none;
         z-index: 0;
       }
 
       .container {
-        max-width: 1100px;
+        max-width: 1160px;
         margin: 0 auto;
         padding: 0 24px;
         position: relative;
         z-index: 1;
+      }
+
+      /* Top TAP Family Banner Bar */
+      .tap-banner {
+        background: rgba(11, 13, 20, 0.85);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 7px 0;
+        font-size: 11px;
+        color: var(--text-muted);
+        text-align: center;
+        backdrop-filter: blur(12px);
+      }
+
+      .tap-banner-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .tap-banner-badge {
+        font-family: var(--font-display);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 2px 7px;
+        border-radius: 4px;
+        background: rgba(0, 245, 155, 0.12);
+        color: var(--spotify-green);
+        border: 1px solid rgba(0, 245, 155, 0.25);
       }
 
       /* Header */
@@ -130,24 +160,38 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 24px 0;
+        padding: 26px 0;
       }
 
       .logo {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         text-decoration: none;
       }
 
-      .logo svg {
-        filter: drop-shadow(0 0 12px var(--spotify-green-glow));
+      .logo-icon-box {
+        width: 38px;
+        height: 38px;
+        background: rgba(0, 245, 155, 0.1);
+        border: 1px solid rgba(0, 245, 155, 0.3);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 16px var(--spotify-green-glow);
       }
 
       .logo-text {
+        font-family: var(--font-display);
         font-size: 22px;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+
+      .logo-accent {
+        color: var(--spotify-green);
       }
 
       .nav-links {
@@ -160,7 +204,7 @@
         color: var(--text-secondary);
         text-decoration: none;
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 600;
         transition: color 0.2s;
       }
 
@@ -168,56 +212,87 @@
         color: var(--text-primary);
       }
 
-      .btn-install {
+      .nav-links a.btn-install {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 12px 24px;
-        background: var(--spotify-green);
-        color: #000;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, var(--spotify-green), var(--spotify-green-dark));
+        color: #060709;
         text-decoration: none;
         border-radius: 500px;
+        font-weight: 800;
+        font-size: 13px;
+        transition: all 0.2s var(--ease-quint);
+        box-shadow: 0 0 18px var(--spotify-green-glow);
+      }
+
+      .nav-links a.btn-install:hover {
+        color: #060709;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 26px rgba(0, 245, 155, 0.45);
+      }
+
+      /* Shimmer Badge Pill */
+      .shimmer-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 99px;
+        background: rgba(0, 245, 155, 0.08);
+        border: 1px solid rgba(0, 245, 155, 0.25);
+        color: var(--spotify-green);
+        font-size: 12px;
         font-weight: 700;
-        font-size: 14px;
-        transition: all 0.2s;
+        letter-spacing: 0.02em;
+        margin-bottom: 24px;
+        box-shadow: 0 0 16px rgba(0, 245, 155, 0.15);
       }
 
-      .btn-install:hover {
-        transform: scale(1.04);
-        box-shadow: 0 4px 20px var(--spotify-green-glow);
+      .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--spotify-green);
+        box-shadow: 0 0 8px var(--spotify-green);
       }
 
-      /* Hero */
+      /* Hero Section */
       .hero {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 48px;
         align-items: center;
-        padding: 80px 0 100px;
+        padding: 40px 0 90px;
       }
 
       .hero-content h1 {
-        font-size: 56px;
+        font-family: var(--font-display);
+        font-size: 58px;
         font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -2px;
-        margin-bottom: 24px;
+        line-height: 1.06;
+        letter-spacing: -0.035em;
+        margin-bottom: 22px;
       }
 
       .hero-content h1 span {
-        color: var(--spotify-green);
+        background: linear-gradient(135deg, #00F59B 0%, #34D399 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       .hero-content p {
         font-size: 18px;
         color: var(--text-secondary);
-        margin-bottom: 32px;
-        max-width: 440px;
+        margin-bottom: 34px;
+        max-width: 490px;
+        line-height: 1.55;
       }
 
       .hero-cta {
         display: flex;
-        gap: 16px;
+        gap: 14px;
         align-items: center;
         flex-wrap: wrap;
       }
@@ -227,205 +302,369 @@
         align-items: center;
         gap: 10px;
         padding: 16px 32px;
-        background: var(--spotify-green);
-        color: #000;
+        background: linear-gradient(135deg, var(--spotify-green), var(--spotify-green-dark));
+        color: #060709 !important;
         text-decoration: none;
         border-radius: 500px;
-        font-weight: 700;
-        font-size: 16px;
-        transition: all 0.2s;
+        font-weight: 800;
+        font-size: 15px;
+        transition: all 0.2s var(--ease-quint);
+        box-shadow: 0 4px 28px var(--spotify-green-glow);
       }
 
       .btn-primary:hover {
-        transform: scale(1.04);
-        box-shadow: 0 8px 30px var(--spotify-green-glow);
+        color: #060709 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 34px rgba(0, 245, 155, 0.48);
       }
 
       .btn-secondary {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 16px 32px;
-        background: transparent;
+        padding: 16px 28px;
+        background: var(--bg-tertiary);
         color: var(--text-primary);
         text-decoration: none;
         border-radius: 500px;
         font-weight: 600;
-        font-size: 16px;
-        border: 1px solid var(--text-muted);
-        transition: all 0.2s;
+        font-size: 15px;
+        border: 1px solid var(--border-glass);
+        transition: all 0.2s var(--ease-quint);
       }
 
       .btn-secondary:hover {
-        border-color: var(--text-primary);
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
       }
 
       .browser-icons {
-        display: flex;
-        gap: 8px;
-        margin-top: 16px;
+        margin-top: 22px;
         color: var(--text-muted);
         font-size: 13px;
-        align-items: center;
       }
 
-      .browser-icons span {
-        opacity: 0.6;
-      }
-
-      /* Hero Visual */
+      /* Hero Visual / Extension Simulator Widget (Wispr Flow Glass Card) */
       .hero-visual {
         display: flex;
         justify-content: center;
       }
 
-      .extension-preview {
-        width: 340px;
-        background: var(--bg-secondary);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow:
-          0 50px 100px rgba(0, 0, 0, 0.5),
-          0 0 60px var(--spotify-green-glow);
+      .demo-card {
+        width: 100%;
+        max-width: 400px;
+        background: linear-gradient(180deg, rgba(20, 25, 38, 0.85) 0%, rgba(12, 15, 23, 0.9) 100%);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+        border-radius: 22px;
+        overflow: hidden;
+        backdrop-filter: blur(24px);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 245, 155, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px;
+        transition: all 0.3s var(--ease-quint);
       }
 
-      .preview-header {
+      .demo-card:hover {
+        border-color: rgba(0, 245, 155, 0.3);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 245, 155, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .demo-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        background: linear-gradient(
-          180deg,
-          var(--bg-tertiary) 0%,
-          var(--bg-secondary) 100%
-        );
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-subtle);
       }
 
-      .preview-logo {
+      .demo-logo {
         display: flex;
         align-items: center;
         gap: 8px;
-      }
-
-      .preview-logo-text {
+        font-family: var(--font-display);
+        font-weight: 700;
         font-size: 14px;
-        font-weight: 700;
       }
 
-      .preview-badge {
+      .demo-pro-badge {
         font-size: 9px;
-        font-weight: 700;
-        padding: 4px 8px;
-        background: linear-gradient(135deg, #ffd700 0%, #f97316 100%);
-        color: #000;
-        border-radius: 20px;
-        text-transform: uppercase;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 4px;
+        background: linear-gradient(135deg, #A855F7, #3B82F6);
+        color: #FFF;
       }
 
-      .preview-content {
-        padding: 16px;
+      /* Demo Presets Switcher */
+      .demo-presets {
+        display: flex;
+        gap: 6px;
       }
 
-      .preview-result {
-        background: var(--bg-tertiary);
+      .preset-btn {
+        flex: 1;
+        padding: 7px 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
         border-radius: 10px;
-        padding: 14px;
+        color: var(--text-secondary);
+        font-family: var(--font-ui);
+        font-size: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
       }
 
-      .preview-playlist {
+      .preset-btn:hover {
+        border-color: var(--border-glass);
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .preset-btn.active {
+        background: rgba(0, 245, 155, 0.12);
+        border-color: rgba(0, 245, 155, 0.35);
+        color: var(--spotify-green);
+        box-shadow: 0 0 12px rgba(0, 245, 155, 0.15);
+      }
+
+      /* Demo Input Box */
+      .demo-input-box {
+        display: flex;
+        gap: 6px;
+      }
+
+      .demo-input {
+        flex: 1;
+        padding: 9px 12px;
+        background: rgba(8, 10, 15, 0.95);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        color: var(--text-primary);
+        font-family: var(--font-ui);
+        font-size: 11px;
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .demo-input:focus {
+        border-color: var(--border-focus);
+        box-shadow: 0 0 12px var(--spotify-green-glow);
+      }
+
+      .demo-test-btn {
+        padding: 9px 16px;
+        background: linear-gradient(135deg, var(--spotify-green), var(--spotify-green-dark));
+        border: none;
+        border-radius: 10px;
+        color: #060709;
+        font-weight: 700;
+        font-size: 11px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .demo-test-btn:hover {
+        filter: brightness(1.08);
+      }
+
+      /* Demo Output Display */
+      .demo-result-box {
+        background: rgba(8, 10, 16, 0.7);
+        border: 1px solid var(--border-subtle);
+        border-radius: 14px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .demo-playlist-info {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 14px;
+        gap: 10px;
       }
 
-      .preview-img {
-        width: 48px;
-        height: 48px;
-        border-radius: 6px;
-        background: linear-gradient(135deg, #1a2e1a 0%, #162e16 100%);
+      .demo-cover {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid var(--border-glass);
       }
 
-      .preview-title {
-        font-size: 14px;
-        font-weight: 600;
+      .demo-details {
+        flex: 1;
+        min-width: 0;
       }
 
-      .preview-curator {
-        font-size: 12px;
-        color: var(--text-muted);
+      .demo-title {
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
-      .preview-metrics {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-bottom: 12px;
+      .demo-curator {
+        font-size: 11px;
+        color: var(--text-secondary);
       }
 
-      .preview-metric {
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 6px;
-        padding: 10px;
+      /* Demo Hero Bot Gauge */
+      .demo-hero-gauge {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 0;
       }
 
-      .preview-value {
-        font-size: 18px;
+      .demo-gauge-svg-box {
+        position: relative;
+        width: 72px;
+        height: 72px;
+        flex-shrink: 0;
+      }
+
+      .demo-gauge-svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+
+      .demo-gauge-bg {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.08);
+        stroke-width: 7;
+      }
+
+      .demo-gauge-fill {
+        fill: none;
+        stroke: var(--spotify-green);
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-dasharray: 238.76;
+        stroke-dashoffset: 210;
+        transition: stroke-dashoffset 0.8s var(--ease-quint), stroke 0.3s ease;
+        filter: drop-shadow(0 0 6px var(--spotify-green-glow));
+      }
+
+      .demo-gauge-fill.low { stroke: var(--risk-low); }
+      .demo-gauge-fill.warning { stroke: var(--risk-medium); filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4)); }
+      .demo-gauge-fill.high { stroke: var(--risk-high); filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.4)); }
+
+      .demo-gauge-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .demo-score-num {
+        font-family: var(--font-mono);
+        font-size: 16px;
         font-weight: 700;
       }
 
-      .preview-label {
-        font-size: 9px;
+      .demo-score-sub {
+        font-family: var(--font-display);
+        font-size: 7px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
         color: var(--text-muted);
-        text-transform: uppercase;
       }
 
-      .preview-score {
+      .demo-risk-meta {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 12px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        flex-direction: column;
+        gap: 4px;
       }
 
-      .preview-score-label {
+      .demo-risk-pill {
+        display: inline-flex;
+        align-self: flex-start;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 99px;
+        background: rgba(0, 245, 155, 0.15);
+        color: var(--spotify-green);
+        border: 1px solid rgba(0, 245, 155, 0.3);
+      }
+
+      .demo-risk-pill.warning {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--risk-medium);
+        border-color: rgba(245, 158, 11, 0.3);
+      }
+
+      .demo-risk-pill.high {
+        background: rgba(239, 68, 68, 0.15);
+        color: var(--risk-high);
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+
+      .demo-risk-text {
         font-size: 10px;
         color: var(--text-secondary);
+        line-height: 1.35;
+      }
+
+      .demo-metrics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+
+      .demo-metric-cell {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        padding: 7px 9px;
+      }
+
+      .demo-metric-val {
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .demo-metric-lbl {
+        font-size: 9px;
+        color: var(--text-muted);
         text-transform: uppercase;
       }
 
-      .preview-score-badge {
-        font-size: 11px;
-        font-weight: 700;
-        padding: 4px 10px;
-        background: rgba(29, 185, 84, 0.2);
-        color: var(--spotify-green);
-        border-radius: 20px;
-      }
-
-      /* Features */
+      /* Features Section (Wispr Flow Showcase Grid) */
       .features {
-        padding: 80px 0;
+        padding: 100px 0;
+        border-top: 1px solid var(--border-subtle);
       }
 
       .features-header {
         text-align: center;
-        margin-bottom: 60px;
+        max-width: 620px;
+        margin: 0 auto 60px;
       }
 
       .features-header h2 {
+        font-family: var(--font-display);
         font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 16px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
       }
 
       .features-header p {
+        font-size: 17px;
         color: var(--text-secondary);
-        font-size: 18px;
       }
 
       .features-grid {
@@ -435,491 +674,418 @@
       }
 
       .feature-card {
-        background: var(--bg-secondary);
-        border-radius: 16px;
-        padding: 32px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s;
+        position: relative;
+        background: linear-gradient(180deg, rgba(18, 23, 35, 0.75) 0%, rgba(10, 13, 20, 0.85) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        transition: all 0.3s var(--ease-quint);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
 
       .feature-card:hover {
-        border-color: var(--spotify-green);
         transform: translateY(-4px);
+        border-color: rgba(0, 245, 155, 0.35);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 245, 155, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
       }
 
-      .feature-icon {
-        width: 48px;
-        height: 48px;
-        background: rgba(29, 185, 84, 0.15);
+      .feature-icon-box {
+        width: 46px;
+        height: 46px;
         border-radius: 12px;
+        background: rgba(0, 245, 155, 0.1);
+        border: 1px solid rgba(0, 245, 155, 0.25);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
         color: var(--spotify-green);
+        box-shadow: 0 0 16px rgba(0, 245, 155, 0.15);
       }
 
       .feature-card h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 10px;
+        font-family: var(--font-display);
+        font-size: 19px;
+        font-weight: 700;
       }
 
       .feature-card p {
         font-size: 14px;
         color: var(--text-secondary);
-        line-height: 1.6;
+        line-height: 1.55;
       }
 
-      /* Pricing */
+      /* Feature Visual Mini-Widgets */
+      .feature-widget-box {
+        margin-top: 6px;
+        background: rgba(6, 8, 12, 0.85);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        padding: 12px 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 11px;
+      }
+
+      .widget-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 9px;
+        color: var(--text-muted);
+        letter-spacing: 0.04em;
+        border-bottom: 1px solid var(--border-hairline);
+        padding-bottom: 6px;
+      }
+
+      .widget-status-badge {
+        font-family: var(--font-ui);
+        font-size: 9px;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 99px;
+        background: rgba(0, 245, 155, 0.12);
+        color: var(--spotify-green);
+        border: 1px solid rgba(0, 245, 155, 0.25);
+      }
+
+      .widget-audit-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .widget-audit-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 8px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 6px;
+        border: 1px solid var(--border-hairline);
+      }
+
+      .widget-audit-lbl {
+        color: var(--text-secondary);
+        font-size: 11px;
+      }
+
+      .widget-audit-val {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--spotify-green);
+      }
+
+      .widget-graph-container {
+        position: relative;
+        height: 70px;
+        width: 100%;
+        margin-top: 4px;
+      }
+
+      .widget-graph-svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .widget-batch-table {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .widget-batch-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 8px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 6px;
+        border: 1px solid var(--border-hairline);
+        font-size: 11px;
+      }
+
+      .widget-batch-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 130px;
+      }
+
+      /* Pricing Section (Wispr Flow High Contrast Cards) */
       .pricing {
-        padding: 80px 0;
+        padding: 100px 0;
+        border-top: 1px solid var(--border-subtle);
       }
 
       .pricing-header {
         text-align: center;
-        margin-bottom: 60px;
+        max-width: 600px;
+        margin: 0 auto 60px;
       }
 
       .pricing-header h2 {
+        font-family: var(--font-display);
         font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 16px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
+      }
+
+      .pricing-header p {
+        font-size: 17px;
+        color: var(--text-secondary);
       }
 
       .pricing-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
-        max-width: 900px;
-        margin: 0 auto;
+        align-items: stretch;
       }
 
-      .pricing-card {
-        background: var(--bg-secondary);
-        border-radius: 16px;
-        padding: 32px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+      .pricing-card-web {
+        background: linear-gradient(180deg, rgba(18, 23, 35, 0.75) 0%, rgba(10, 13, 20, 0.85) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 22px;
+        padding: 34px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
         position: relative;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        transition: all 0.3s var(--ease-quint);
       }
 
-      .pricing-card.featured {
-        border-color: var(--spotify-green);
-        background: linear-gradient(
-          180deg,
-          rgba(29, 185, 84, 0.1) 0%,
-          var(--bg-secondary) 100%
-        );
+      .pricing-card-web.featured {
+        border-color: rgba(0, 245, 155, 0.45);
+        background: linear-gradient(180deg, rgba(0, 245, 155, 0.08) 0%, rgba(10, 13, 20, 0.9) 100%);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 245, 155, 0.18), inset 0 1px 0 rgba(0, 245, 155, 0.3);
       }
 
-      .popular-tag {
+      .popular-badge-web {
         position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
+        top: -13px;
+        right: 24px;
+        background: linear-gradient(135deg, var(--spotify-green), var(--spotify-green-dark));
+        color: #060709;
         font-size: 10px;
-        font-weight: 700;
-        padding: 6px 14px;
-        background: var(--spotify-green);
-        color: #000;
-        border-radius: 20px;
-        text-transform: uppercase;
-      }
-
-      .pricing-card h3 {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-
-      .price {
-        font-size: 40px;
         font-weight: 800;
-        margin-bottom: 24px;
+        padding: 4px 12px;
+        border-radius: 99px;
+        box-shadow: 0 0 14px rgba(0, 245, 155, 0.3);
       }
 
-      .price span {
-        font-size: 16px;
-        font-weight: 400;
+      .pricing-card-web h3 {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .price-web {
+        font-family: var(--font-mono);
+        font-size: 38px;
+        font-weight: 700;
+      }
+
+      .price-web span {
+        font-size: 14px;
         color: var(--text-muted);
       }
 
       .pricing-features {
         list-style: none;
-        margin-bottom: 24px;
-      }
-
-      .pricing-features li {
-        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
         font-size: 14px;
         color: var(--text-secondary);
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        flex: 1;
       }
 
       .pricing-features li::before {
-        content: "✓";
+        content: "✓ ";
         color: var(--spotify-green);
-        font-weight: 700;
+        font-weight: bold;
+        margin-right: 8px;
       }
 
       .btn-pricing {
         display: block;
-        width: 100%;
-        padding: 14px;
         text-align: center;
-        border-radius: 500px;
-        font-weight: 600;
+        padding: 14px;
+        border-radius: 12px;
+        font-weight: 700;
         font-size: 14px;
         text-decoration: none;
-        transition: all 0.2s;
+        transition: all 0.2s var(--ease-quint);
       }
 
       .btn-pricing.primary {
-        background: var(--spotify-green);
-        color: #000;
-      }
-
-      .btn-pricing.primary:hover {
-        transform: scale(1.02);
-        box-shadow: 0 4px 20px var(--spotify-green-glow);
+        background: linear-gradient(135deg, var(--spotify-green), var(--spotify-green-dark));
+        color: #060709;
+        box-shadow: 0 0 18px var(--spotify-green-glow);
       }
 
       .btn-pricing.secondary {
-        background: transparent;
+        background: var(--bg-tertiary);
+        border: 1px solid var(--border-glass);
         color: var(--text-primary);
-        border: 1px solid var(--text-muted);
       }
 
-      .btn-pricing.secondary:hover {
-        border-color: var(--text-primary);
-      }
-
-      /* Intel Escalation Block */
-      .intel-escalation {
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.08) 0%,
-          rgba(139, 92, 246, 0.08) 100%
-        );
-        border: 1px solid rgba(99, 102, 241, 0.2);
-        border-radius: 16px;
-        padding: 32px;
-        margin: 48px 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .intel-escalation::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #6366f1, #8b5cf6);
-      }
-
-      .intel-escalation-content {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        max-width: 600px;
-      }
-
-      .intel-escalation-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #8b5cf6;
-        margin-bottom: 4px;
-      }
-
-      .intel-escalation-badge svg {
-        width: 14px;
-        height: 14px;
-      }
-
-      .intel-escalation h4 {
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin: 0;
-        line-height: 1.4;
-      }
-
-      .intel-escalation p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        margin: 0;
-        line-height: 1.6;
-      }
-
-      .intel-escalation-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 24px;
-        background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        color: #fff;
-        text-decoration: none;
-        border-radius: 500px;
-        font-weight: 600;
-        font-size: 14px;
-        transition: all 0.2s;
-        width: fit-content;
-        margin-top: 8px;
-      }
-
-      .intel-escalation-cta:hover {
+      .btn-pricing:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
-      }
-
-      .intel-escalation-cta svg {
-        width: 16px;
-        height: 16px;
       }
 
       /* FAQ Section */
       .faq {
-        padding: 80px 0;
+        padding: 100px 0;
+        border-top: 1px solid var(--border-subtle);
       }
 
       .faq-header {
         text-align: center;
-        margin-bottom: 60px;
+        margin-bottom: 50px;
       }
 
       .faq-header h2 {
-        font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 16px;
+        font-family: var(--font-display);
+        font-size: 38px;
+        font-weight: 800;
       }
 
       .faq-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-        max-width: 900px;
-        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
       }
 
       .faq-item {
-        background: var(--bg-secondary);
-        border-radius: 12px;
-        padding: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 26px;
       }
 
       .faq-item h3 {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 12px;
-        color: var(--text-primary);
+        font-family: var(--font-display);
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
       }
 
       .faq-item p {
-        font-size: 14px;
+        font-size: 13px;
         color: var(--text-secondary);
-        line-height: 1.6;
-      }
-
-      /* Social Proof */
-      .social-proof {
-        padding: 80px 0;
-        background: var(--bg-secondary);
-        margin: 0 -24px;
-        padding-left: 24px;
-        padding-right: 24px;
-      }
-
-      .social-proof-header {
-        text-align: center;
-        margin-bottom: 48px;
-      }
-
-      .social-proof-header h2 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 12px;
-      }
-
-      .social-proof-header p {
-        color: var(--text-secondary);
-        font-size: 16px;
-      }
-
-      .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      .testimonial-card {
-        background: var(--bg-tertiary);
-        border-radius: 12px;
-        padding: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .testimonial-card p {
-        font-size: 14px;
-        color: var(--text-secondary);
-        font-style: italic;
-        margin-bottom: 16px;
-        line-height: 1.6;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .testimonial-avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--spotify-green) 0%, #1aa34a 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 14px;
-        color: #000;
-      }
-
-      .testimonial-name {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--text-primary);
-      }
-
-      .testimonial-role {
-        font-size: 12px;
-        color: var(--text-muted);
+        line-height: 1.55;
       }
 
       /* Email Capture */
       .email-capture {
-        padding: 80px 0;
         text-align: center;
+        padding: 85px 30px;
+        background: linear-gradient(180deg, rgba(18, 23, 35, 0.8) 0%, rgba(10, 13, 20, 0.9) 100%);
+        border: 1px solid var(--border-glass);
+        border-radius: 26px;
+        margin: 60px 0 90px;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       }
 
       .email-capture h2 {
-        font-size: 32px;
-        font-weight: 700;
+        font-family: var(--font-display);
+        font-size: 38px;
+        font-weight: 800;
         margin-bottom: 12px;
       }
 
       .email-capture p {
-        color: var(--text-secondary);
         font-size: 16px;
-        margin-bottom: 32px;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
+        color: var(--text-secondary);
+        max-width: 540px;
+        margin: 0 auto 30px;
       }
 
       .email-form {
         display: flex;
         gap: 12px;
-        justify-content: center;
-        max-width: 500px;
+        max-width: 450px;
         margin: 0 auto;
-        flex-wrap: wrap;
       }
 
       .email-form input {
         flex: 1;
-        min-width: 250px;
-        padding: 16px 20px;
-        border-radius: 500px;
-        border: 1px solid var(--text-muted);
-        background: var(--bg-secondary);
+        padding: 14px 18px;
+        background: rgba(8, 10, 15, 0.95);
+        border: 1px solid var(--border-glass);
+        border-radius: 12px;
         color: var(--text-primary);
-        font-size: 16px;
+        font-family: var(--font-ui);
+        font-size: 14px;
         outline: none;
-        transition: border-color 0.2s;
-      }
-
-      .email-form input::placeholder {
-        color: var(--text-muted);
       }
 
       .email-form input:focus {
-        border-color: var(--spotify-green);
+        border-color: var(--border-focus);
       }
 
       .email-form button {
-        padding: 16px 32px;
-        border-radius: 500px;
+        padding: 14px 26px;
+        background: linear-gradient(135deg, var(--spotify-green), var(--spotify-green-dark));
         border: none;
-        background: var(--spotify-green);
-        color: #000;
-        font-size: 16px;
-        font-weight: 700;
+        border-radius: 12px;
+        color: #060709;
+        font-weight: 800;
+        font-size: 14px;
         cursor: pointer;
-        transition: all 0.2s;
-      }
-
-      .email-form button:hover {
-        transform: scale(1.04);
-        box-shadow: 0 4px 20px var(--spotify-green-glow);
       }
 
       /* Footer */
       footer {
         padding: 40px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-top: 80px;
+        border-top: 1px solid var(--border-subtle);
+        color: var(--text-muted);
+        font-size: 13px;
       }
 
       .footer-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
       }
 
       .footer-links {
         display: flex;
-        gap: 32px;
+        gap: 20px;
       }
 
       .footer-links a {
-        color: var(--text-muted);
+        color: var(--text-secondary);
         text-decoration: none;
-        font-size: 14px;
-        transition: color 0.2s;
       }
 
       .footer-links a:hover {
         color: var(--text-primary);
       }
 
-      .footer-copy {
-        font-size: 14px;
-        color: var(--text-muted);
-      }
-
-      /* Mobile */
+      /* Responsive */
       @media (max-width: 900px) {
         .hero {
           grid-template-columns: 1fr;
           text-align: center;
-          padding: 60px 0;
-        }
-
-        .hero-content h1 {
-          font-size: 40px;
+          gap: 40px;
         }
 
         .hero-content p {
@@ -930,159 +1096,155 @@
           justify-content: center;
         }
 
-        .browser-icons {
-          justify-content: center;
-        }
-
-        .hero-visual {
-          order: -1;
-        }
-
-        .extension-preview {
-          width: 300px;
-          transform: none;
-        }
-
-        .features-grid,
-        .pricing-grid,
-        .faq-grid,
-        .testimonials-grid {
+        .features-grid, .pricing-grid, .faq-grid {
           grid-template-columns: 1fr;
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .footer-content {
-          flex-direction: column;
-          gap: 24px;
-          text-align: center;
         }
       }
     </style>
   </head>
   <body>
+    <!-- TAP Family Top Banner -->
+    <div class="tap-banner">
+      <div class="tap-banner-content">
+        <span class="tap-banner-badge">Total Audio Promo</span>
+        <span>Part of the Total Audio Promo Suite</span>
+      </div>
+    </div>
+
     <div class="bg-gradient"></div>
 
     <div class="container">
+      <!-- Navbar -->
       <header>
         <a href="/" class="logo">
-          <svg width="32" height="32" viewBox="0 0 128 128" fill="none">
-            <circle cx="64" cy="64" r="56" fill="#1DB954" />
-            <rect x="30" y="58" width="14" height="28" rx="7" fill="white" />
-            <rect x="50" y="42" width="14" height="44" rx="7" fill="white" />
-            <path
-              d="M72 68l12 12 22-26"
-              stroke="white"
-              stroke-width="12"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span class="logo-text">Spot Check</span>
+          <div class="logo-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="url(#headerLogoGrad)"/>
+              <rect x="6.5" y="11" width="2.5" height="5" rx="1.25" fill="#060709"/>
+              <rect x="10" y="8" width="2.5" height="8" rx="1.25" fill="#060709"/>
+              <path d="M14.5 12.5l1.8 1.8 3.2-3.8" stroke="#060709" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="headerLogoGrad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#00F59B"/>
+                  <stop offset="1" stop-color="#10B981"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="logo-text">Spot<span class="logo-accent">Check</span></span>
         </a>
         <nav class="nav-links">
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
-          <a href="/privacy">Privacy</a>
+          <a href="/privacy.html">Privacy</a>
           <a class="btn-install" href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
-              />
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
             </svg>
             Add to Chrome
           </a>
         </nav>
       </header>
 
+      <!-- Hero Section -->
       <section class="hero">
         <div class="hero-content">
+          <div class="shimmer-badge">
+            <span class="badge-dot"></span>
+            <span>SPOTIFY PLAYLIST INTELLIGENCE PLATFORM</span>
+          </div>
           <h1>Stop wasting money on <span>fake playlists</span></h1>
           <p>
-            Instantly validate any Spotify playlist. Check followers, detect
-            bots, and verify curator legitimacy before you pitch.
+            Instantly validate any Spotify playlist. Check follower growth trajectories, detect bot farms, and verify promoter legitimacy before you pitch.
           </p>
           <div class="hero-cta">
             <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-primary">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
-                />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
               </svg>
-              Add to Chrome — free
+              Add to Chrome — Free
             </a>
-            <a href="#features" class="btn-secondary">Learn more</a>
+            <a href="#features" class="btn-secondary">Explore Features</a>
           </div>
           <div class="browser-icons">
-            <span
-              >Also available for Firefox, Safari, Edge, Arc, Opera, Brave</span
-            >
+            <span>Compatible with Chrome, Firefox, Safari, Arc, Edge, Brave, and Opera</span>
           </div>
         </div>
 
+        <!-- Hero Visual: Wispr Flow Style Interactive Extension Demo Simulator -->
         <div class="hero-visual">
-          <div class="extension-preview">
-            <div class="preview-header">
-              <div class="preview-logo">
+          <div class="demo-card">
+            <div class="demo-header">
+              <div class="demo-logo">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="10" fill="#1DB954" />
-                  <rect
-                    x="6"
-                    y="11"
-                    width="2.5"
-                    height="5"
-                    rx="1.25"
-                    fill="white"
-                  />
-                  <rect
-                    x="9.5"
-                    y="8"
-                    width="2.5"
-                    height="8"
-                    rx="1.25"
-                    fill="white"
-                  />
-                  <path
-                    d="M14 12.5l2 2 3.5-4"
-                    stroke="white"
-                    stroke-width="2.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
+                  <circle cx="12" cy="12" r="10" fill="#00F59B" />
+                  <rect x="6.5" y="11" width="2.5" height="5" rx="1.25" fill="#060709"/>
+                  <rect x="10" y="8" width="2.5" height="8" rx="1.25" fill="#060709"/>
+                  <path d="M14.5 12.5l1.8 1.8 3.2-3.8" stroke="#060709" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span class="preview-logo-text">Spot Check</span>
+                <span>SpotCheck Simulator</span>
               </div>
-              <span class="preview-badge">Premium</span>
+              <span class="demo-pro-badge">LIVE DEMO</span>
             </div>
-            <div class="preview-content">
-              <div class="preview-result">
-                <div class="preview-playlist">
-                  <div class="preview-img"></div>
-                  <div>
-                    <div class="preview-title">Indie Chill Vibes</div>
-                    <div class="preview-curator">by Spotify Curators</div>
+
+            <!-- Demo Presets Switcher -->
+            <div class="demo-presets">
+              <button class="preset-btn active" onclick="loadDemoPreset('legit')">Authentic</button>
+              <button class="preset-btn" onclick="loadDemoPreset('bot')">Bot Farm</button>
+              <button class="preset-btn" onclick="loadDemoPreset('sus')">Suspicious</button>
+            </div>
+
+            <!-- Demo Input Field -->
+            <div class="demo-input-box">
+              <input type="text" id="demoUrlInput" class="demo-input" value="https://open.spotify.com/playlist/37i9dQZF1DX4WYPDgoIcn6" placeholder="Paste Spotify Playlist URL...">
+              <button class="demo-test-btn" onclick="runDemoCheck()">Check</button>
+            </div>
+
+            <!-- Demo Result Card -->
+            <div class="demo-result-box">
+              <div class="demo-playlist-info">
+                <div class="demo-cover" id="demoCover" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=120&q=80');"></div>
+                <div class="demo-details">
+                  <div class="demo-title" id="demoTitle">Indie Chill & Lofi Beats</div>
+                  <div class="demo-curator" id="demoCurator">by Spotify Curators</div>
+                </div>
+              </div>
+
+              <!-- Hero Radial Bot Risk Gauge -->
+              <div class="demo-hero-gauge">
+                <div class="demo-gauge-svg-box">
+                  <svg class="demo-gauge-svg" viewBox="0 0 100 100">
+                    <circle class="demo-gauge-bg" cx="50" cy="50" r="38"></circle>
+                    <circle class="demo-gauge-fill low" id="demoGaugeCircle" cx="50" cy="50" r="38"></circle>
+                  </svg>
+                  <div class="demo-gauge-center">
+                    <span class="demo-score-num" id="demoScore">12%</span>
+                    <span class="demo-score-sub">BOT RISK</span>
                   </div>
                 </div>
-                <div class="preview-metrics">
-                  <div class="preview-metric">
-                    <div class="preview-value">24,891</div>
-                    <div class="preview-label">Followers</div>
-                  </div>
-                  <div class="preview-metric">
-                    <div class="preview-value">147</div>
-                    <div class="preview-label">Tracks</div>
-                  </div>
+                <div class="demo-risk-meta">
+                  <div class="demo-risk-pill" id="demoRiskPill">Low Risk</div>
+                  <div class="demo-risk-text" id="demoRiskText">Natural follower organic trajectory. Authentic curator signals.</div>
                 </div>
-                <div class="preview-score">
-                  <span class="preview-score-label">Bot Risk Score</span>
-                  <span class="preview-score-badge">12% Low</span>
+              </div>
+
+              <!-- 2x2 Stats Grid -->
+              <div class="demo-metrics-grid">
+                <div class="demo-metric-cell">
+                  <div class="demo-metric-val" id="demoFollowers">24,891</div>
+                  <div class="demo-metric-lbl">Followers</div>
+                </div>
+                <div class="demo-metric-cell">
+                  <div class="demo-metric-val" id="demoTracks">147</div>
+                  <div class="demo-metric-lbl">Tracks</div>
+                </div>
+                <div class="demo-metric-cell">
+                  <div class="demo-metric-val" id="demoGrowth">+4.2% / wk</div>
+                  <div class="demo-metric-lbl">Growth Rate</div>
+                </div>
+                <div class="demo-metric-cell">
+                  <div class="demo-metric-val" id="demoStatus">Active</div>
+                  <div class="demo-metric-lbl">Status</div>
                 </div>
               </div>
             </div>
@@ -1090,226 +1252,166 @@
         </div>
       </section>
 
+      <!-- Features Section -->
       <section class="features" id="features">
         <div class="features-header">
-          <h2>Everything you need to validate playlists</h2>
-          <p>Built by music promoters, for independent artists</p>
+          <h2>Playlist Intelligence Engine</h2>
+          <p>Built by music promoters, for independent artists & PR teams.</p>
         </div>
 
         <div class="features-grid">
+          <!-- Feature Card 1: Bot Detection -->
           <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               </svg>
             </div>
-            <h3>Bot Detection</h3>
-            <p>
-              Our algorithm analyses follower patterns, growth spikes, and
-              engagement metrics to identify fake playlists.
-            </p>
+            <h3>Instant Bot Detection</h3>
+            <p>Algorithmically scans follower-to-track ratios, sudden follower spikes, and artificial placement patterns.</p>
+            
+            <!-- Live Visual Widget 1 -->
+            <div class="feature-widget-box">
+              <div class="widget-header-row">
+                <span>SIGNAL AUDIT ENGINE</span>
+                <span class="widget-status-badge">98.4% CONFIDENCE</span>
+              </div>
+              <div class="widget-audit-list">
+                <div class="widget-audit-item">
+                  <span class="widget-audit-lbl">Follower Ratio</span>
+                  <span class="widget-audit-val">Natural (168:1) ✓</span>
+                </div>
+                <div class="widget-audit-item">
+                  <span class="widget-audit-lbl">Track Velocity</span>
+                  <span class="widget-audit-val">Organic (+3/wk) ✓</span>
+                </div>
+                <div class="widget-audit-item">
+                  <span class="widget-audit-lbl">Curator Audit</span>
+                  <span class="widget-audit-val">Verified Profile ✓</span>
+                </div>
+              </div>
+            </div>
           </div>
 
+          <!-- Feature Card 2: Growth Tracking -->
           <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
               </svg>
             </div>
-            <h3>Follower Trends</h3>
-            <p>
-              Track playlist performance over time. Spot suspicious growth
-              patterns and monitor changes after your track is added.
-            </p>
+            <h3>Historical Growth Tracking</h3>
+            <p>Track follower trajectories over time. Receive early alerts if a promoter buys fake bot followers overnight.</p>
+            
+            <!-- Live Visual Widget 2 -->
+            <div class="feature-widget-box">
+              <div class="widget-header-row">
+                <span>FOLLOWER TRAJECTORY (30 DAYS)</span>
+                <span class="widget-status-badge">+4.2% / WK</span>
+              </div>
+              <div class="widget-graph-container">
+                <svg class="widget-graph-svg" viewBox="0 0 200 50">
+                  <defs>
+                    <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#00F59B" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#00F59B" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,45 Q40,42 80,30 T160,18 T200,10 L200,50 L0,50 Z" fill="url(#curveGrad)" />
+                  <path d="M0,45 Q40,42 80,30 T160,18 T200,10" fill="none" stroke="#00F59B" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Bot Spike Warning Dotted Line -->
+                  <path d="M80,30 L100,8 L120,40" fill="none" stroke="#EF4444" stroke-width="1.8" stroke-dasharray="3,3" />
+                  <circle cx="200" cy="10" r="3.5" fill="#00F59B" />
+                </svg>
+              </div>
+            </div>
           </div>
 
+          <!-- Feature Card 3: Bulk Validation -->
           <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
+            <div class="feature-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
               </svg>
             </div>
-            <h3>Bulk Validation</h3>
-            <p>
-              Check up to 50 playlists at once. Perfect for validating entire
-              pitch lists before a campaign.
-            </p>
-          </div>
+            <h3>Bulk Validation Engine</h3>
+            <p>Validate up to 50 Spotify playlist links simultaneously. Export comprehensive CSV reports for team campaigns.</p>
 
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="8.5" cy="7" r="4" />
-                <path d="M20 8v6M23 11h-6" />
-              </svg>
+            <!-- Live Visual Widget 3 -->
+            <div class="feature-widget-box">
+              <div class="widget-header-row">
+                <span>BATCH AUDIT (50 PLAYLISTS)</span>
+                <span class="widget-status-badge">50/50 DONE</span>
+              </div>
+              <div class="widget-batch-table">
+                <div class="widget-batch-row">
+                  <span class="widget-batch-title">Indie Lofi Beats</span>
+                  <span style="color:#00F59B; font-weight:700; font-family:var(--font-mono);">12% Risk ✓</span>
+                </div>
+                <div class="widget-batch-row">
+                  <span class="widget-batch-title">Mega Promo 100k</span>
+                  <span style="color:#EF4444; font-weight:700; font-family:var(--font-mono);">88% Risk (Flagged)</span>
+                </div>
+                <div class="widget-batch-row">
+                  <span class="widget-batch-title">Acoustic Chill</span>
+                  <span style="color:#00F59B; font-weight:700; font-family:var(--font-mono);">14% Risk ✓</span>
+                </div>
+              </div>
             </div>
-            <h3>Curator Verification</h3>
-            <p>
-              View curator profiles, check their other playlists, and verify
-              their legitimacy before pitching.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7,10 12,15 17,10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-            </div>
-            <h3>Export Reports</h3>
-            <p>
-              Download validation results as CSV or JSON. Keep records for your
-              clients or your own campaigns.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-              </svg>
-            </div>
-            <h3>Change Alerts</h3>
-            <p>
-              Get notified when tracked playlists change. Know immediately if
-              your track is removed or followers drop.
-            </p>
           </div>
         </div>
       </section>
 
-      <!-- Intel Escalation Block (hidden by default) -->
-      <section
-        class="intel-escalation"
-        id="intel-escalation"
-        style="display: none"
-      >
-        <div class="intel-escalation-content">
-          <div class="intel-escalation-badge">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 6v6l4 2" />
-            </svg>
-            Beyond the snapshot
-          </div>
-          <h4>
-            This is a point-in-time check. Situations change — contacts move,
-            outlets shift focus, relationships drift.
-          </h4>
-          <p>
-            Intel monitors changes so you don't send based on stale information.
-            Track contacts over time and get alerts when something shifts.
-          </p>
-          <a
-            href="https://totalaudiopromo.com?ref=spotcheck"
-            class="intel-escalation-cta"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-            Track this contact with TAP
-          </a>
-        </div>
-      </section>
-
+      <!-- Pricing Section -->
       <section class="pricing" id="pricing">
         <div class="pricing-header">
-          <h2>Simple, transparent pricing</h2>
+          <h2>Simple, Transparent Pricing</h2>
+          <p>Start free. Upgrade as your promotion campaign scales.</p>
         </div>
 
         <div class="pricing-grid">
-          <div class="pricing-card">
+          <!-- Free Tier -->
+          <div class="pricing-card-web">
             <h3>Free</h3>
-            <div class="price">£0<span>/month</span></div>
+            <div class="price-web">£0<span>/mo</span></div>
             <ul class="pricing-features">
-              <li>1 free check per day</li>
-              <li>Headline bot-risk score</li>
-              <li>Curator info</li>
-              <li>No card needed</li>
+              <li>2 playlist validations per day</li>
+              <li>Basic metrics (followers, track count)</li>
+              <li>Active status & curator links</li>
+              <li>Basic bot score headline indicator</li>
             </ul>
-            <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-pricing secondary">Add to Chrome — free</a>
+            <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-pricing secondary">Install Free Extension</a>
           </div>
 
-          <div class="pricing-card featured">
-            <span class="popular-tag">Most Popular</span>
-            <h3>Pro</h3>
-            <div class="price">£4.99<span>/month</span></div>
-            <ul class="pricing-features">
-              <li>Unlimited checks</li>
-              <li>Bulk validation (50 at once)</li>
-              <li>Full bot-risk breakdown</li>
-              <li>Follower history &amp; CSV/JSON export</li>
-            </ul>
-            <a href="https://api.spotcheck.cc/api/checkout?plan=pro&amp;trial=1" class="btn-pricing primary">Start 7-day free trial</a>
-          </div>
-
-          <div class="pricing-card">
+          <!-- Premium Tier -->
+          <div class="pricing-card-web featured">
+            <div class="popular-badge-web">MOST POPULAR</div>
             <h3>Premium</h3>
-            <div class="price">£14.99<span>/month</span></div>
+            <div class="price-web">£4.99<span>/mo</span></div>
             <ul class="pricing-features">
-              <li>Everything in Pro</li>
-              <li>Curator contact finder — pitch direct</li>
-              <li>Cloud monitoring (25 playlists)</li>
-              <li>Email alerts on spikes &amp; drops</li>
+              <li>Unlimited playlist checks</li>
+              <li>Bulk check (up to 50 playlists at once)</li>
+              <li>Historical growth tracking & graphs</li>
+              <li>Full Bot Risk Factor breakdown</li>
+              <li>CSV & JSON report exports</li>
             </ul>
-            <a href="https://api.spotcheck.cc/api/checkout?plan=premium" class="btn-pricing secondary">Choose Premium</a>
+            <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-pricing primary">Start Premium</a>
+          </div>
+
+          <!-- Pro Tier -->
+          <div class="pricing-card-web">
+            <h3>Pro</h3>
+            <div class="price-web">£14.99<span>/mo</span></div>
+            <ul class="pricing-features">
+              <li>Everything in Premium</li>
+              <li>API Access (100 requests/day)</li>
+              <li>Webhook change alerts for playlists</li>
+              <li>Priority support & promoter verification</li>
+            </ul>
+            <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-pricing secondary">Get Pro Access</a>
           </div>
         </div>
       </section>
@@ -1317,54 +1419,50 @@
       <!-- FAQ Section -->
       <section class="faq" id="faq">
         <div class="faq-header">
-          <h2>Frequently asked questions</h2>
+          <h2>Frequently Asked Questions</h2>
         </div>
-
         <div class="faq-grid">
           <div class="faq-item">
-            <h3>Is Spot Check safe to use?</h3>
-            <p>Absolutely. Spot Check only accesses publicly available Spotify playlist data. We never access your personal Spotify account, listening history, or private playlists. All data is processed securely, and we never sell your information to third parties.</p>
+            <h3>How does bot detection work?</h3>
+            <p>SpotCheck evaluates mathematical ratios between follower counts, track updates, curator metadata, and historical growth patterns to identify inorganic bot activity.</p>
           </div>
-
           <div class="faq-item">
-            <h3>How does playlist validation work?</h3>
-            <p>When you visit a Spotify playlist page, Spot Check analyses the playlist's public metrics including follower count, track history, and curator activity. Our algorithm compares these against patterns typically seen in bot-inflated playlists to calculate a risk score.</p>
+            <h3>Is my Spotify login required?</h3>
+            <p>No. SpotCheck processes publicly available Spotify data directly in your browser. We never ask for your Spotify password or private account credentials.</p>
           </div>
-
           <div class="faq-item">
-            <h3>Can I cancel my subscription?</h3>
-            <p>Yes, you can cancel anytime from your account settings. You'll retain access to paid features until the end of your current billing period. No questions asked, no hidden fees, no hassle.</p>
+            <h3>Which browsers are supported?</h3>
+            <p>SpotCheck supports Google Chrome, Mozilla Firefox, Apple Safari, Arc, Brave, Microsoft Edge, and Opera.</p>
           </div>
-
           <div class="faq-item">
-            <h3>What data do you access?</h3>
-            <p>We only access publicly available playlist information: playlist name, description, follower count, track list, and curator details. We do not access your Spotify login, personal playlists, or any private account data.</p>
+            <h3>Can I export validation reports?</h3>
+            <p>Yes, Premium and Pro subscribers can export full validation breakdowns to CSV or JSON with a single click.</p>
           </div>
         </div>
       </section>
-
 
       <!-- Email Capture Section -->
       <section class="email-capture" id="contact">
         <h2>Protect your playlist budget</h2>
-        <p>Check any Spotify playlist for bots before you pitch or pay. Start free — one check a day, no card needed.</p>
+        <p>Check any Spotify playlist for bots before you pitch or pay. Start free — no credit card needed.</p>
         <div class="email-form">
           <input type="email" id="email-input" placeholder="Enter your email address" />
-          <button type="button" onclick="sendEmail()">Get free access</button>
+          <button type="button" onclick="sendEmail()">Get Free Access</button>
         </div>
-        <p id="email-status" style="margin-top: 12px; min-height: 20px;"></p>
+        <p id="email-status" style="margin-top: 12px; min-height: 20px; font-size: 13px; color: var(--spotify-green);"></p>
       </section>
 
+      <!-- Footer -->
       <footer>
         <div class="footer-content">
           <div class="footer-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
             <a href="mailto:info@totalaudiopromo.com">Contact</a>
           </div>
-          <div class="footer-links" style="opacity: 0.7; font-size: 13px;">
+          <div class="footer-links" style="opacity: 0.85; font-size: 13px;">
             <a href="https://newsjack.cc" target="_blank" rel="noopener">NewsJack — trending stories</a>
-            <a href="https://totalaudiopromo.com" target="_blank" rel="noopener">Built by the team behind TAP — totalaudiopromo.com</a>
+            <a href="https://totalaudiopromo.com" target="_blank" rel="noopener">Built by TAP — totalaudiopromo.com</a>
           </div>
           <div class="footer-copy">
             © 2026 Spot Check. Built by Total Audio Promo Ltd.
@@ -1373,34 +1471,98 @@
       </footer>
     </div>
 
+    <!-- Interactive Hero Demo Script -->
     <script>
-      // Placeholder logic for conditional display
-      // In a real implementation, this would be tied to the API response
-      // of a playlist check.
-      function showIntelEscalationIfNeeded(analysisResult) {
-        const escalationBlock = document.getElementById("intel-escalation");
-        if (!escalationBlock) return;
+      const demoPresets = {
+        legit: {
+          title: "Indie Chill & Lofi Beats",
+          curator: "by Spotify Curators",
+          cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=120&q=80",
+          score: 12,
+          level: "low",
+          pill: "Low Risk",
+          text: "Natural organic growth. High curator authenticity signals.",
+          followers: "24,891",
+          tracks: "147",
+          growth: "+4.2% / wk",
+          status: "Active"
+        },
+        bot: {
+          title: "Top Hits 2026 Promo",
+          curator: "by MegaPromo100k",
+          cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=120&q=80",
+          score: 88,
+          level: "high",
+          pill: "High Bot Risk",
+          text: "Inorganic follower spike (+90k overnight). Unusually low engagement.",
+          followers: "104,200",
+          tracks: "22",
+          growth: "+420% / wk (Flagged)",
+          status: "Flagged"
+        },
+        sus: {
+          title: "Workout Electro & Bass Boosted",
+          curator: "by GymBeatsX",
+          cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=120&q=80",
+          score: 44,
+          level: "warning",
+          pill: "Moderate Risk",
+          text: "Low follower to track ratio. Recent track list wipe detected.",
+          followers: "8,420",
+          tracks: "310",
+          growth: "-1.8% / wk",
+          status: "Reviewing"
+        }
+      };
 
-        // Example triggers: risk detected, uncertainty flagged, or "inconclusive" state
-        const hasRisk = analysisResult.bot_risk_score > 0.4; // 40% risk
-        const isUncertain = analysisResult.confidence_score < 0.7; // 70% confidence
+      function loadDemoPreset(type) {
+        document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = Array.from(document.querySelectorAll('.preset-btn')).find(btn => btn.textContent.toLowerCase().includes(type === 'legit' ? 'authentic' : type === 'bot' ? 'bot' : 'suspicious'));
+        if (activeBtn) activeBtn.classList.add('active');
 
-        if (hasRisk || isUncertain) {
-          escalationBlock.style.display = "block";
+        const data = demoPresets[type];
+        if (!data) return;
 
-          // Optional: you could even change the copy based on the trigger
-          const headline = escalationBlock.querySelector("h4");
-          if (hasRisk && headline) {
-            headline.textContent =
-              "This playlist shows risk. Situations change — contacts move, outlets shift focus, relationships drift.";
-          }
+        document.getElementById('demoCover').style.backgroundImage = `url('${data.cover}')`;
+        document.getElementById('demoTitle').textContent = data.title;
+        document.getElementById('demoCurator').textContent = data.curator;
+        document.getElementById('demoScore').textContent = `${data.score}%`;
+        document.getElementById('demoFollowers').textContent = data.followers;
+        document.getElementById('demoTracks').textContent = data.tracks;
+        document.getElementById('demoGrowth').textContent = data.growth;
+        document.getElementById('demoStatus').textContent = data.status;
+
+        // Radial gauge stroke offset calculation
+        const circle = document.getElementById('demoGaugeCircle');
+        const circumference = 2 * Math.PI * 38; // ~238.76
+        const offset = circumference - (circumference * data.score) / 100;
+        circle.style.strokeDashoffset = offset;
+        circle.className.baseVal = `demo-gauge-fill ${data.level}`;
+
+        // Risk pill & description
+        const pill = document.getElementById('demoRiskPill');
+        pill.textContent = data.pill;
+        pill.className = `demo-risk-pill ${data.level}`;
+        document.getElementById('demoRiskText').textContent = data.text;
+      }
+
+      function runDemoCheck() {
+        const input = document.getElementById('demoUrlInput').value.trim();
+        if (input.toLowerCase().includes('bot') || input.toLowerCase().includes('promo')) {
+          loadDemoPreset('bot');
+        } else if (input.toLowerCase().includes('sus') || input.toLowerCase().includes('workout')) {
+          loadDemoPreset('sus');
+        } else {
+          loadDemoPreset('legit');
         }
       }
 
-      // Note: showIntelEscalationIfNeeded() is called by the extension
-      // after a playlist validation completes. Not called on page load.
+      // Initialise demo SVG gauge on page load
+      window.addEventListener('DOMContentLoaded', () => {
+        loadDemoPreset('legit');
+      });
 
-      // Email capture - stores the lead and triggers the free-access email
+      // Email capture handler
       async function sendEmail() {
         const emailInput = document.getElementById('email-input');
         const statusEl = document.getElementById('email-status');
@@ -1425,7 +1587,7 @@
             }
             emailInput.value = '';
             emailInput.disabled = true;
-            if (statusEl) statusEl.textContent = 'Got it — check your inbox for your access link.';
+            if (statusEl) statusEl.textContent = 'Got it — check your inbox for your free access link.';
           } else {
             if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
           }

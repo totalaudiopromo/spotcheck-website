@@ -5,78 +5,94 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Spot Check</title>
   <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
-      color: #e0e0e0;
-      background: #121212;
+      color: #94A3B8;
+      background: #08090C;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 2rem;
     }
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(0, 245, 155, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
     .card {
+      position: relative;
       max-width: 560px;
       width: 100%;
-      background: #1e1e1e;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
+      background: rgba(18, 22, 33, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
       padding: 2.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 30px rgba(0, 245, 155, 0.15);
     }
-    h1 { font-size: 1.75rem; margin-bottom: 0.5rem; color: #fff; }
-    .lead { color: #b0b0b0; margin-bottom: 2rem; }
-    h2 { font-size: 1rem; color: #fff; margin: 1.5rem 0 0.5rem; }
-    ol { padding-left: 1.25rem; color: #b0b0b0; }
+    h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: #fff; letter-spacing: -0.02em; }
+    .lead { color: #94A3B8; margin-bottom: 2rem; font-size: 1rem; }
+    h2 { font-size: 1.05rem; font-weight: 700; color: #fff; margin: 1.5rem 0 0.5rem; }
+    ol { padding-left: 1.25rem; color: #94A3B8; font-size: 0.95rem; }
     li { margin-bottom: 0.75rem; }
     code {
-      background: #2a2a2a;
+      background: rgba(0, 245, 155, 0.12);
       padding: 0.15rem 0.4rem;
       border-radius: 4px;
       font-size: 0.9em;
-      color: #1DB954;
+      color: #00F59B;
+      border: 1px solid rgba(0, 245, 155, 0.25);
     }
     .row { display: flex; gap: 0.75rem; margin-top: 2rem; }
     .btn {
       flex: 1;
       text-align: center;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      border-radius: 500px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
     }
-    .btn-primary { background: #1DB954; color: #000; }
-    .btn-primary:hover { background: #1ed760; }
-    .btn-secondary { background: transparent; color: #b0b0b0; border: 1px solid #2a2a2a; }
-    .btn-secondary:hover { color: #fff; border-color: #444; }
-    a { color: #1DB954; text-decoration: none; }
-    .upsell { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #2a2a2a; color: #888; font-size: 0.9rem; }
-    .upsell strong { color: #1DB954; }
+    .btn-primary { background: linear-gradient(135deg, #00F59B, #10B981); color: #08090C; box-shadow: 0 4px 20px rgba(0, 245, 155, 0.3); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(0, 245, 155, 0.45); }
+    .btn-secondary { background: rgba(255,255,255,0.05); color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); }
+    .btn-secondary:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+    a { color: #00F59B; text-decoration: none; }
+    .upsell { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); color: #64748B; font-size: 0.9rem; }
+    .upsell strong { color: #00F59B; }
   </style>
 </head>
 <body>
+  <div class="bg-glow"></div>
   <div class="card">
     <h1>Spot Check is installed.</h1>
-    <p class="lead">Stop wasting submissions on bot playlists. Here's how to use it.</p>
+    <p class="lead">Stop wasting submissions on bot playlists. Here's how to validate instantly.</p>
 
     <h2>Try it in 30 seconds</h2>
     <ol>
       <li>Open any Spotify playlist in your browser</li>
-      <li>Click the Spot Check icon in your toolbar (or pin it)</li>
-      <li>Get followers, curator info, and a quick legitimacy read</li>
+      <li>Click the <code>SpotCheck</code> icon in your browser toolbar</li>
+      <li>Inspect the live Bot Risk Score gauge and verified promoter metrics</li>
     </ol>
 
     <h2>Free vs Premium</h2>
-    <p style="color:#b0b0b0; font-size: 0.95rem;">Free covers 2 quick checks a day with the basics. <strong style="color:#fff;">Premium (£4.99/mo)</strong> unlocks the full bot detection breakdown, unlimited checks, bulk validation up to 50 playlists, history tracking, and CSV export.</p>
+    <p style="color:#94A3B8; font-size: 0.95rem;">Free covers daily checks with basic metrics. <strong style="color:#fff;">Premium (£4.99/mo)</strong> unlocks the full Bot Risk factor breakdown, unlimited checks, bulk checking up to 50 playlists, history tracking graphs, and CSV report export.</p>
 
     <div class="row">
       <a class="btn btn-primary" href="https://api.spotcheck.cc/api/checkout?plan=premium">Upgrade to Premium</a>
-      <a class="btn btn-secondary" href="https://open.spotify.com">Try it now</a>
+      <a class="btn btn-secondary" href="https://open.spotify.com" target="_blank">Try on Spotify</a>
     </div>
 
-    <div class="upsell">Tip: Premium pays for itself the first time you skip a fake playlist with 50k bot followers. <strong>Most users hit it within their first 5 checks.</strong></div>
+    <div class="upsell">Tip: Premium pays for itself the first time you skip a fake promoter with bot followers. <strong>Most artists save money within their first 5 checks.</strong></div>
   </div>
 </body>
 </html>
