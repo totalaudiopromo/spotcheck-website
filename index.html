@@ -1,13 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+    <!-- Analytics: PostHog (EU) -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PLACEHOLDER');
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageViewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('phc_mXpRbtEoimKfjcKKmPLGGyj99isov7MuqQVkjRLxumHh',{api_host:'https://eu.i.posthog.com',person_profiles:'identified_only'})
     </script>
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -989,14 +986,14 @@
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>
           <a href="/privacy">Privacy</a>
-          <span class="btn-install" style="opacity: 0.7; cursor: default;">
+          <a class="btn-install" href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
               />
             </svg>
-            Coming Soon
-          </span>
+            Add to Chrome
+          </a>
         </nav>
       </header>
 
@@ -1008,7 +1005,7 @@
             bots, and verify curator legitimacy before you pitch.
           </p>
           <div class="hero-cta">
-            <a href="#contact" class="btn-primary">
+            <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-primary">
               <svg
                 width="20"
                 height="20"
@@ -1019,7 +1016,7 @@
                   d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
                 />
               </svg>
-              Launch App
+              Add to Chrome — free
             </a>
             <a href="#features" class="btn-secondary">Learn more</a>
           </div>
@@ -1096,7 +1093,7 @@
       <section class="features" id="features">
         <div class="features-header">
           <h2>Everything you need to validate playlists</h2>
-          <p>Built by music promoters, for music promoters</p>
+          <p>Built by music promoters, for independent artists</p>
         </div>
 
         <div class="features-grid">
@@ -1282,38 +1279,37 @@
             <h3>Free</h3>
             <div class="price">£0<span>/month</span></div>
             <ul class="pricing-features">
-              <li>5 checks per day</li>
-              <li>Basic metrics</li>
+              <li>1 free check per day</li>
+              <li>Headline bot-risk score</li>
               <li>Curator info</li>
-              <li>Active/removed detection</li>
+              <li>No card needed</li>
             </ul>
-            <span class="btn-pricing secondary" style="cursor: default; opacity: 0.8;">Chrome extension available</span>
+            <a href="https://chromewebstore.google.com/detail/spot-check-playlist-validator/jjbflnbfhfgedpjmehbdmacfdcilchek" target="_blank" rel="noopener" class="btn-pricing secondary">Add to Chrome — free</a>
           </div>
 
           <div class="pricing-card featured">
             <span class="popular-tag">Most Popular</span>
-            <h3>Premium</h3>
+            <h3>Pro</h3>
             <div class="price">£4.99<span>/month</span></div>
             <ul class="pricing-features">
               <li>Unlimited checks</li>
               <li>Bulk validation (50 at once)</li>
-              <li>Historical tracking</li>
-              <li>Bot detection score</li>
-              <li>CSV/JSON export</li>
+              <li>Full bot-risk breakdown</li>
+              <li>Follower history &amp; CSV/JSON export</li>
             </ul>
-            <a href="https://api.spotcheck.cc/api/checkout?plan=premium" class="btn-pricing primary">Upgrade Now</a>
+            <a href="https://api.spotcheck.cc/api/checkout?plan=pro&amp;trial=1" class="btn-pricing primary">Start 7-day free trial</a>
           </div>
 
           <div class="pricing-card">
-            <h3>Pro</h3>
+            <h3>Premium</h3>
             <div class="price">£14.99<span>/month</span></div>
             <ul class="pricing-features">
-              <li>Everything in Premium</li>
-              <li>API access (100 req/day)</li>
-              <li>Webhook alerts</li>
-              <li>Priority support</li>
+              <li>Everything in Pro</li>
+              <li>Curator contact finder — pitch direct</li>
+              <li>Cloud monitoring (25 playlists)</li>
+              <li>Email alerts on spikes &amp; drops</li>
             </ul>
-            <a href="https://api.spotcheck.cc/api/checkout?plan=pro" class="btn-pricing secondary">Upgrade Now</a>
+            <a href="https://api.spotcheck.cc/api/checkout?plan=premium" class="btn-pricing secondary">Choose Premium</a>
           </div>
         </div>
       </section>
@@ -1347,59 +1343,16 @@
         </div>
       </section>
 
-      <!-- Social Proof Section -->
-      <section class="social-proof">
-        <div class="container">
-          <div class="social-proof-header">
-            <h2>Trusted by music promoters</h2>
-            <p>Join artists and labels who validate before they pitch</p>
-          </div>
-
-          <div class="testimonials-grid">
-            <div class="testimonial-card">
-              <p>"Saved me from wasting hundreds on fake playlists. The bot detection is spot on."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">JM</div>
-                <div>
-                  <div class="testimonial-name">James M.</div>
-                  <div class="testimonial-role">Independent Artist</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <p>"Essential tool for any serious playlist campaign. Now I validate every playlist before pitching."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">SR</div>
-                <div>
-                  <div class="testimonial-name">Sarah R.</div>
-                  <div class="testimonial-role">Label Manager</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <p>"The bulk validation feature is a game changer. Checks 50 playlists in seconds."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">DK</div>
-                <div>
-                  <div class="testimonial-name">David K.</div>
-                  <div class="testimonial-role">Music Promoter</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- Email Capture Section -->
       <section class="email-capture" id="contact">
-        <h2>Get notified when we launch</h2>
-        <p>Be the first to know when Spot Check hits the Chrome Web Store. No spam, just launch updates.</p>
+        <h2>Protect your playlist budget</h2>
+        <p>Check any Spotify playlist for bots before you pitch or pay. Start free — one check a day, no card needed.</p>
         <div class="email-form">
           <input type="email" id="email-input" placeholder="Enter your email address" />
-          <button type="button" onclick="sendEmail()">Notify Me</button>
+          <button type="button" onclick="sendEmail()">Get free access</button>
         </div>
+        <p id="email-status" style="margin-top: 12px; min-height: 20px;"></p>
       </section>
 
       <footer>
@@ -1447,20 +1400,38 @@
       // Note: showIntelEscalationIfNeeded() is called by the extension
       // after a playlist validation completes. Not called on page load.
 
-      // Email capture - opens mailto with pre-filled subject
-      function sendEmail() {
+      // Email capture - stores the lead and triggers the free-access email
+      async function sendEmail() {
         const emailInput = document.getElementById('email-input');
+        const statusEl = document.getElementById('email-status');
         const userEmail = emailInput.value.trim();
 
-        if (!userEmail) {
-          alert('Please enter your email address');
+        if (!userEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
+          if (statusEl) statusEl.textContent = 'Please enter a valid email address.';
           return;
         }
 
-        const subject = encodeURIComponent('Spot Check Launch Notification Request');
-        const body = encodeURIComponent(`Hi,\n\nPlease notify me when Spot Check launches on the Chrome Web Store.\n\nMy email: ${userEmail}\n\nThanks!`);
-
-        window.location.href = `mailto:hello@spotcheck.cc?subject=${subject}&body=${body}`;
+        if (statusEl) statusEl.textContent = 'Sending...';
+        try {
+          const res = await fetch('https://api.spotcheck.cc/api/lead-magnet/capture', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: userEmail, source: 'spotcheck-free-access' }),
+          });
+          if (res.ok) {
+            if (window.posthog) {
+              posthog.identify(userEmail);
+              posthog.capture('lead_captured', { source: 'spotcheck-free-access' });
+            }
+            emailInput.value = '';
+            emailInput.disabled = true;
+            if (statusEl) statusEl.textContent = 'Got it — check your inbox for your access link.';
+          } else {
+            if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
+          }
+        } catch {
+          if (statusEl) statusEl.textContent = 'Something went wrong. Please try again.';
+        }
       }
     </script>
   </body>
