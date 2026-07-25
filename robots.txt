@@ -5,4 +5,7 @@ Disallow: /checkout/
 Disallow: /portal/
 Disallow: /dashboard/
 
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
 Sitemap: https://spotcheck.cc/sitemap.xml
+
